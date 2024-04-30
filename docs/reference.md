@@ -1,6 +1,7 @@
 ---
 title: XCM SDK Reference for v0
 description: A reference for the interfaces and methods in the Moonbeam XCM SDK, which can be used to send XCM transfers between Moonbeam and other chains in the ecosystem.
+template: tutorial.html
 ---
 
 # Moonbeam XCM SDK Reference
