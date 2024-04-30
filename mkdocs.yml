@@ -1,5 +1,5 @@
 site_name: XCM SDK Docs
-site_url: https://moonbeam-foundation.github.io/xcm-sdk 
+site_url: https://eshaben.github.io/xcm-sdk-mkdocs/
 docs_dir: docs
 copyright: © 2024 Moonbeam Foundation. All Rights Reserved.
 theme:
