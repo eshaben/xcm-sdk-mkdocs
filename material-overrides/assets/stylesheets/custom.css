@@ -1,0 +1,47 @@
+:root, [data-md-color-scheme='default'] {
+  /** Code highlighting color shades **/
+  /* Numbers */
+  --md-code-hl-number-color: #e1147b;
+  /* Python function names */
+  --md-code-hl-function-color: #42a2a1;
+  /* JavaScript booleans, Python variable names */
+  --md-code-hl-name-color: #9356e9;
+  /* Strings */
+  --md-code-hl-string-color: #e1147b;
+  /* Python print */
+  --md-code-hl-constant-color: #262626;
+  /* Imports, const, let, var, async, await, function, etc. */
+  --md-code-hl-keyword-color: #42a2a1;
+  /* Comments */
+  --md-code-hl-comment-color: #9356e9;
+  /* Code highlighting */
+  --md-code-hl-color: #e1147b;
+  /* Backslashes */
+  --md-code-hl-special-color: #262626;
+}
+
+:root, [data-md-color-scheme='slate'] {
+  /** Code highlighting color shades **/
+  /* Numbers */
+  --md-code-hl-number-color: #f089bd;
+  /* Python function names */
+  --md-code-hl-function-color: #53cbc9;
+  /* JavaScript booleans, Python variable names */
+  --md-code-hl-name-color: #7c71ff;
+  /* Strings */
+  --md-code-hl-string-color: #f089bd;
+  /* Python print */
+  --md-code-hl-constant-color: #ffffff;
+  /* Imports, const, let, var, async, await, function, etc. */
+  --md-code-hl-keyword-color: #53cbc9;
+  /* Comments */
+  --md-code-hl-comment-color: #9c63ec;
+  /* Code highlighting */
+  --md-code-hl-color: #e1147b;
+  /* Backslashes */
+  --md-code-hl-special-color: #ffffff;
+}
+
+.tutorial {
+  max-width: 36.8rem;
+}
