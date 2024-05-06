@@ -10,7 +10,7 @@
       
       
       
-        <link rel="canonical" href="https://eshaben.github.io/xcm-sdk-mkdocs/v1/example-usage/">
+        <link rel="canonical" href="https://eshaben.github.io/xcm-sdk-mkdocs/latest/example-usage/">
       
       
         <link rel="prev" href="../reference/">
@@ -635,15 +635,8 @@
 <h2 id="introduction">Introduction</h2>
 <p>The Moonbeam XCM SDK enables developers to easily transfer assets between chains, either between parachains or between a parachain and the relay chain, within the Polkadot/Kusama ecosystem. With the SDK, you don't need to worry about determining the multilocation of the origin or destination assets or which extrinsics are used on which networks to send XCM transfers.</p>
 <p>The XCM SDK offers helper functions, that provide a very simple interface to execute XCM transfers between chains in the Polkadot/Kusama ecosystem. In addition, the XCM config package allows any parachain project to add their information in a standard way, so they can be immediately supported by the XCM SDK.</p>
-<p>For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference" target="_blank">Reference</a> page.</p>
+<p>For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the <a href="../reference/" target="_blank">Reference</a> page.</p>
 <p>The examples in this guide are shown on Moonbeam, but can be adapted to be used on Moonriver or Moonbase Alpha.</p>
-<p>Test links:</p>
-<ul>
-<li><a href="../reference/" target="_blank">Reference</a> page</li>
-<li><a href="/xcm-sdk-mkdocs/v1/reference" target="_blank">Reference</a> page</li>
-<li><a href="/v1/reference.md" target="_blank">Reference</a> page</li>
-<li><a href="../v1/reference.md" target="_blank">Reference</a> page</li>
-</ul>
 <h2 id="install-the-xcm-sdk">Install the XCM SDK</h2>
 <p>To get started with the Moonbeam XCM SDK, you'll need to first install the SDK:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npm<span class="w"> </span>install<span class="w"> </span>@moonbeam-network/xcm-sdk
@@ -819,7 +812,7 @@
 <p class="admonition-title">Note</p>
 </div>
 <h3 id="create-a-polkadot-signer">Create a Polkadot Signer</h3>
-<p>In this example, you can use a <a href="/builders/build/substrate-api/polkadot-js-api#keyrings" target="_blank">Polkadot.js Keyring</a> to sign transactions. Please note that this approach is not recommended for production applications.</p>
+<p>In this example, you can use a <a href="https://polkadot.js.org/docs/api/start/keyring/" target="_blank">Polkadot.js Keyring</a> to sign transactions. Please note that this approach is not recommended for production applications.</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Keyring</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@polkadot/api&#39;</span><span class="p">;</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">cryptoWaitReady</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@polkadot/util-crypto&#39;</span><span class="p">;</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kd">const</span><span class="w"> </span><span class="nx">privateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;INSERT_PRIVATE_KEY&#39;</span><span class="p">;</span>
@@ -961,7 +954,7 @@
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on each of the <code>Sdk().assets()</code> builder functions, including the parameters and returned data, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-builder-methods" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on each of the <code>Sdk().assets()</code> builder functions, including the parameters and returned data, please refer to the <a href="../reference/#transfer-data-builder-methods" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <p>If you don't need any of the asset or chain information, you can use the <code>getTransferData</code> function:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Sdk</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@moonbeam-network/xcm-sdk&#39;</span><span class="p">;</span>
@@ -984,7 +977,7 @@
 </span></code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on the <code>Sdk().getTransferData()</code> function, including the parameters and returned data, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#core-sdk-methods" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on the <code>Sdk().getTransferData()</code> function, including the parameters and returned data, please refer to the <a href="../reference/#core-sdk-methods" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <p>As previously mentioned, regardless of which method you use to build the transfer data, you'll generate the same output.</p>
 <details class="code">
@@ -1131,7 +1124,7 @@
 <li><code>getEstimate()</code> - returns an estimated amount of the asset that will be received on the destination chain, less any destination fees</li>
 </ul>
 <h2 id="transfer-an-asset">Transfer an Asset</h2>
-<p>Now that you've built the transfer data, you can go ahead and transfer the asset from the source chain to the destination chain. To do so, you can use the <code>transfer</code> function, but first you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use <code>1000000000n</code> or <code>'0.1'</code>. You can use <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#utility-functions" target="_blank">asset conversion methods</a>, like <code>toDecimal</code> to convert the asset to decimal format.</p>
+<p>Now that you've built the transfer data, you can go ahead and transfer the asset from the source chain to the destination chain. To do so, you can use the <code>transfer</code> function, but first you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use <code>1000000000n</code> or <code>'0.1'</code>. You can use <a href="../reference/#utility-functions" target="_blank">asset conversion methods</a>, like <code>toDecimal</code> to convert the asset to decimal format.</p>
 <p>For this example, you can transfer twice the minimum amount required of DOT:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="p">...</span>
 </span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>
@@ -1143,7 +1136,7 @@
 <p>As seen in the above snippet, the <code>transfer</code> function returns a transaction hash on the source chain.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on the parameters and returned data for <code>transfer</code>, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on the parameters and returned data for <code>transfer</code>, please refer to the <a href="../reference/#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <h2 id="swap-an-asset">Swap an Asset</h2>
 <p>To swap an asset, you can use the same transfer data and call <code>data.swap()</code> to switch the source and destination chain information. From there, you can simply call the <code>transfer</code> function to execute the swap.</p>
@@ -1294,7 +1287,7 @@
 </details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on the parameters and returned data for <code>swap</code>, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on the parameters and returned data for <code>swap</code>, please refer to the <a href="../reference/#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <h2 id="get-estimate">Get an Estimate of the Asset to be Received on the Destination Chain</h2>
 <p>When you send an XCM message, you typically pay fees on the destination chain to execute the XCM instructions. Before you transfer the asset, you can use the <code>getEstimate</code> function to calculate an estimated amount of the asset that will be received on the destination chain, minus any fees.</p>
@@ -1328,7 +1321,7 @@
 </details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on the parameters and returned data for <code>getEstimate</code>, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on the parameters and returned data for <code>getEstimate</code>, please refer to the <a href="../reference/#transfer-data-consumer-methods" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <h2 id="transfer-min-max-amounts">Get Transfer Minimum and Maximum Amounts</h2>
 <p>You can use <a href="#build-xcm-transfer-data">transfer data</a> to retrieve the minimum and maximum amount of an asset that can be transferred. To do so, you'll access the <code>min</code> and <code>max</code> properties of the asset being transferred:</p>
@@ -1377,7 +1370,7 @@
 </details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on assets and asset amounts, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#assets" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on assets and asset amounts, please refer to the <a href="../reference/#assets" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 <h2 id="get-transfer-fees">Get Transfer Fees</h2>
 <p>The <a href="#build-xcm-transfer-data">transfer data</a> provides information on transfer fees for the source and destination chains. You can retrieve the fees using the following snippet:</p>
@@ -1421,7 +1414,7 @@
 </details>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For more information on assets and asset amounts, including fees, please refer to the <a href="/builders/interoperability/xcm/xcm-sdk/v1/reference#assets" target="_blank">XCM SDK Reference</a>.</p>
+<p>For more information on assets and asset amounts, including fees, please refer to the <a href="../reference/#assets" target="_blank">XCM SDK Reference</a>.</p>
 </div>
 
 
