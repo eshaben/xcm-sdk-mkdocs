@@ -18,6 +18,12 @@
   --md-code-hl-color: #e1147b;
   /* Backslashes */
   --md-code-hl-special-color: #262626;
+
+  /** Footer color */
+  --md-footer-bg-color: #ffffff;
+  --md-footer-bg-color--dark: #ffffff;
+  --md-footer-fg-color: #000000;
+  --md-footer-fg-color--light: #000000;
 }
 
 :root, [data-md-color-scheme='slate'] {
@@ -40,8 +46,44 @@
   --md-code-hl-color: #e1147b;
   /* Backslashes */
   --md-code-hl-special-color: #ffffff;
+
+    /** Footer color */
+  --md-footer-bg-color: #000000;
+  --md-footer-bg-color--dark: #000000;
+  --md-footer-fg-color: #ffffff;
+  --md-footer-fg-color--light: #ffffff;
 }
 
 .tutorial {
   max-width: 36.8rem;
+}
+
+/* Header styling */ 
+.md-social__link {
+  height: unset;
+  margin-left: .6rem;
+}
+
+.md-social__link svg {
+  max-height: 1.2rem;
+  max-width: 1.2rem;
+}
+
+@media screen and (min-width: 76.25em) {
+  [dir=ltr] .md-header__source {
+    margin-left: 0;
+  }
+}
+
+/* Footer styling */
+.md-footer-copyright {
+  padding: .1em;
+  margin: auto;
+  font-size: .64rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin: .5em;
 }

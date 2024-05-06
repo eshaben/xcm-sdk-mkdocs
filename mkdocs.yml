@@ -2,11 +2,15 @@ site_name: XCM SDK Docs
 site_url: https://eshaben.github.io/xcm-sdk-mkdocs/
 docs_dir: docs
 copyright: © 2024 Moonbeam Foundation. All Rights Reserved.
+repo_name: moonbeam-foundation/xcm-sdk
+repo_url: https://github.com/moonbeam-foundation/xcm-sdk
 theme:
   name: material
   custom_dir: material-overrides
   favicon: assets/images/Moonbeam-Favicon-50.webp
   logo: assets/images/Moonbeam-Favicon-50.webp
+  icon:
+    repo: fontawesome/brands/github
   font:
     text: Open Sans
   palette:
@@ -50,5 +54,11 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 extra:
+  generator: false
   version:
     provider: mike
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/PfpUATX
+      name: Discord
+

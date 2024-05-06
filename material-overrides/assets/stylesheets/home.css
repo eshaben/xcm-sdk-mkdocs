@@ -1,10 +1,28 @@
+/* Background image on home page */
+[data-md-color-scheme='slate'] .md-main {
+    /* Set gradient background */
+    background: linear-gradient(#163737, #241631);
+    /* For older browsers */
+    background: -webkit-linear-gradient(#163737, #241631);
+    background: -moz-linear-gradient(#163737, #241631);
+    background: -o-linear-gradient(#163737, #241631);
+}
+
+/* Background image on home page */
+[data-md-color-scheme='default'] .md-main {
+  /* Set gradient background */
+  background: linear-gradient(#BAEAE9, #D8D1DE);
+  /* For older browsers */
+  background: -webkit-linear-gradient(#BAEAE9, #D8D1DE);
+  background: -moz-linear-gradient(#BAEAE9, #D8D1DE);
+  background: -o-linear-gradient(#BAEAE9, #D8D1DE);
+}
+
 /* Styles for the hero section */
 .hero {
-    background-image: url('../images/home.png');
-    background-size: cover;
-    background-position: center;
     text-align: center;
-    padding: 100px 0;
+    padding: 10px 0;
+    color: var(--md-default-fg-color);
   }
   
   .hero-content {
@@ -13,13 +31,12 @@
     margin: 0 auto;
     padding: 2em 3em;
     background: var(--md-home-hero-bg-color);
-    color: #000000;
     border-radius: 3em;
   }
   
   .hero h1 {
     font-size: 36px;
-    color: #000000;
+    color: var(--md-default-fg-color);
   }
   
   .hero p {
