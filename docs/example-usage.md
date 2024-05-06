@@ -12,16 +12,9 @@ The Moonbeam XCM SDK enables developers to easily transfer assets between chains
 
 The XCM SDK offers helper functions, that provide a very simple interface to execute XCM transfers between chains in the Polkadot/Kusama ecosystem. In addition, the XCM config package allows any parachain project to add their information in a standard way, so they can be immediately supported by the XCM SDK.
 
-For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the [Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference){target=\_blank} page.
+For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the [Reference](./reference.md){target=\_blank} page.
 
 The examples in this guide are shown on Moonbeam, but can be adapted to be used on Moonriver or Moonbase Alpha.
-
-Test links:
-
-- [Reference](./reference.md){target=\_blank} page
-- [Reference](/xcm-sdk-mkdocs/v1/reference){target=\_blank} page
-- [Reference](/v1/reference.md){target=\_blank} page
-- [Reference](../v1/reference.md){target=\_blank} page
 
 ## Install the XCM SDK {: #install-the-xcm-sdk }
 
@@ -223,7 +216,7 @@ If you want to pass in a browser extension wallet to viem, you can use the follo
 
 ### Create a Polkadot Signer {: #create-a-polkadot-signer }
 
-In this example, you can use a [Polkadot.js Keyring](/builders/build/substrate-api/polkadot-js-api#keyrings){target=\_blank} to sign transactions. Please note that this approach is not recommended for production applications.
+In this example, you can use a [Polkadot.js Keyring](https://polkadot.js.org/docs/api/start/keyring/){target=\_blank} to sign transactions. Please note that this approach is not recommended for production applications.
 
 ```js
 import { Keyring } from '@polkadot/api';
@@ -398,7 +391,7 @@ fromPolkadot();
 ```
 
 !!! note
-    For more information on each of the `Sdk().assets()` builder functions, including the parameters and returned data, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-builder-methods){target=\_blank}.
+    For more information on each of the `Sdk().assets()` builder functions, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference.md#transfer-data-builder-methods){target=\_blank}.
 
 If you don't need any of the asset or chain information, you can use the `getTransferData` function:
 
@@ -423,7 +416,7 @@ fromPolkadot();
 ```
 
 !!! note
-    For more information on the `Sdk().getTransferData()` function, including the parameters and returned data, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#core-sdk-methods){target=\_blank}.
+    For more information on the `Sdk().getTransferData()` function, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference.md#core-sdk-methods){target=\_blank}.
 
 As previously mentioned, regardless of which method you use to build the transfer data, you'll generate the same output.
 
@@ -573,7 +566,7 @@ As you may have noticed in the example response, the transfer data contains info
 
 ## Transfer an Asset {: #transfer-an-asset }
 
-Now that you've built the transfer data, you can go ahead and transfer the asset from the source chain to the destination chain. To do so, you can use the `transfer` function, but first you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use `1000000000n` or `'0.1'`. You can use [asset conversion methods](/builders/interoperability/xcm/xcm-sdk/v1/reference#utility-functions){target=\_blank}, like `toDecimal` to convert the asset to decimal format.
+Now that you've built the transfer data, you can go ahead and transfer the asset from the source chain to the destination chain. To do so, you can use the `transfer` function, but first you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use `1000000000n` or `'0.1'`. You can use [asset conversion methods](./reference.md#utility-functions){target=\_blank}, like `toDecimal` to convert the asset to decimal format.
 
 For this example, you can transfer twice the minimum amount required of DOT:
 
@@ -589,7 +582,7 @@ console.log(`${data.source.chain.name} tx hash: ${hash}`);
 As seen in the above snippet, the `transfer` function returns a transaction hash on the source chain.
 
 !!! note
-    For more information on the parameters and returned data for `transfer`, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `transfer`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
 
 ## Swap an Asset {: #swap-an-asset}
 
@@ -745,7 +738,7 @@ The `swap` function returns the transfer data with the original source chain and
     ```
 
 !!! note
-    For more information on the parameters and returned data for `swap`, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `swap`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
 
 ## Get an Estimate of the Asset to be Received on the Destination Chain {: #get-estimate }
 
@@ -786,7 +779,7 @@ The `getEstimate` function returns the estimated amount along with information o
     ```
 
 !!! note
-    For more information on the parameters and returned data for `getEstimate`, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `getEstimate`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
 
 ## Get Transfer Minimum and Maximum Amounts {: #transfer-min-max-amounts }
 
@@ -838,7 +831,7 @@ The `min` and `max` properties return the minimum and maximum amount of the asse
     ```
 
 !!! note
-    For more information on assets and asset amounts, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=\_blank}.
+    For more information on assets and asset amounts, please refer to the [XCM SDK Reference](./reference.md#assets){target=\_blank}.
 
 ## Get Transfer Fees {: #get-transfer-fees }
 
@@ -887,6 +880,6 @@ The `fee` property returns the amount of fees to be paid along with information 
     ```
 
 !!! note
-    For more information on assets and asset amounts, including fees, please refer to the [XCM SDK Reference](/builders/interoperability/xcm/xcm-sdk/v1/reference#assets){target=\_blank}.
+    For more information on assets and asset amounts, including fees, please refer to the [XCM SDK Reference](./reference.md#assets){target=\_blank}.
   
---8<-- 'text/_disclaimers/third-party-content.md'
+--8<-- 'text/third-party-content.md'
