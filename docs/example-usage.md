@@ -16,7 +16,12 @@ For an overview of the available methods and interfaces in the Moonbeam XCM SDK,
 
 The examples in this guide are shown on Moonbeam, but can be adapted to be used on Moonriver or Moonbase Alpha.
 
-lalala
+Test links:
+
+- [Reference](./reference.md){target=\_blank} page
+- [Reference](/xcm-sdk-mkdocs/v1/reference){target=\_blank} page
+- [Reference](/v1/reference.md){target=\_blank} page
+- [Reference](../v1/reference.md){target=\_blank} page
 
 ## Install the XCM SDK {: #install-the-xcm-sdk }
 
