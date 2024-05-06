@@ -52,7 +52,7 @@ You can pass, for example, a [browser extension wallet as a signer into Ethers](
 
 To create an EVM signer and a Polkadot signer, you can refer to the following sections.
 
-!!! remember
+!!! warning
     **Never store your private key or mnemonic in a JavaScript or TypeScript file.**
 
 ### Create a EVM Signer {: #create-a-evm-signer }
