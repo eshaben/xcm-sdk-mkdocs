@@ -3,7 +3,7 @@ on:
   # Trigger the workflow on a new pull request on master
   pull_request_target:
     branches:
-      - master
+      - main
 
 jobs:
   build-docs-site:
