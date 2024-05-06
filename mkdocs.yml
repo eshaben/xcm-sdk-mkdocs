@@ -38,6 +38,8 @@ extra_css:
 plugins:
   - search
   - awesome-pages
+  - mike:
+      canonical_version: latest
 markdown_extensions:
   - admonition
   - attr_list
