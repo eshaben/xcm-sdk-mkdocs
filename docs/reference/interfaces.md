@@ -1,5 +1,5 @@
 ---
-title: XCM SDK Reference - Interfaces - v1
+title: XCM SDK Reference - Interfaces - v2
 description: A reference for the types and interfaces in the Moonbeam XCM SDK that can be used to send XCM transfers between chains within the Polkadot/Kusama ecosystems.
 ---
 
@@ -405,7 +405,7 @@ Defines the destination chain data for the transfer.
 
 ```js title="Example"
 // The Destination Chain Transfer Data object
-// For sending DOT from Polkadot to Moonbeam 
+// For sending DOT from Polkadot to Moonbeam
 {
   balance: {
     key: 'dot',
@@ -555,14 +555,14 @@ Defines the source chain data for the transfer.
 
 <div class="grid" markdown>
 <div markdown>
-Defines the EVM signer for transfers involving EVM chains. Can be an [Ethers signer](https://docs.ethers.org/v5/api/signer/#signers) or [viem Wallet Client](https://viem.sh/docs/clients/wallet).
+Defines the EVM signer for transfers involving EVM chains. Can be an [Ethers signer](https://docs.ethers.org/v6/api/wallet/#Wallet) or [viem Wallet Client](https://viem.sh/docs/clients/wallet).
 
 </div>
 
 ```js title="Example"
 import { ethers } from 'ethers';
 
-const provider = new ethers.providers.WebSocketProvider(
+const provider = new ethers.WebSocketProvider(
   'wss://wss.api.moonbeam.network',
   {
     chainId: 1284,
