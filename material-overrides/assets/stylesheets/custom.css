@@ -116,7 +116,7 @@
 }
 
 .md-typeset .grid {
-  grid-gap: 2.5rem;
+  grid-gap: 3rem;
 }
 
 .md-typeset .grid > div:first-child > p:first-child {
