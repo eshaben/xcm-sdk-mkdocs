@@ -842,6 +842,8 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
+<div class="tutorial">
+    
                   
 
   
@@ -852,7 +854,7 @@
 <h2 id="introduction">Introduction</h2>
 <p>The Moonbeam XCM SDK enables developers to easily deposit and withdraw assets to Moonbeam/Moonriver from the relay chain and other parachains in the Polkadot/Kusama ecosystem. With the SDK, you don't need to worry about determining the multilocation of the origin or destination assets or which extrinsics are used on which networks to send XCM transfers. To deposit or withdraw assets, you simply define the asset and origin chain you want to deposit from or withdraw back to, along with the sending account's signer, and the amount to send.</p>
 <p>The XCM SDK offers simple helper functions like <code>deposit</code> and <code>withdraw</code>, that provide a very simple interface to execute XCM transfers between chains in the Polkadot/Kusama ecosystem. In addition, the XCM config package allows any parachain project to add their information in a standard way, so they can be immediately supported by the XCM SDK.</p>
-<p>For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the <a href="./reference.md" target="_blank">Reference</a> page.</p>
+<p>For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the <a href="../reference/interfaces/" target="_blank">Reference</a> page.</p>
 <p>The examples in this guide are shown on Moonbeam, but can be adapted to be used on Moonriver or Moonbase Alpha.</p>
 <h2 id="getting-started">Getting Started</h2>
 <p>To get started with the XCM SDK, you'll first need to install the corresponding NPM package. Next, you'll also need to create signers to be used to sign transactions to transfer assets between Moonbeam and another chain within the Polkadot ecosystem. Lastly, you'll need to initialize the API which will provide you with asset and chain information and the necessary functions to deposit, withdraw, and subscribe to balance information.</p>
@@ -999,7 +1001,7 @@
 </div>
 </div>
 <h2 id="using-the-api">Using the SDK Interfaces</h2>
-<p>The Moonbeam SDK provides an API which includes a series of <a href="./reference.md#core-sdk-interfaces" target="_blank">interfaces</a> to get asset information for each of the supported assets, chain information for the initialized network, and functions to enable deposits, withdrawals, and subscription to balance information.</p>
+<p>The Moonbeam SDK provides an API which includes a series of <a href="../reference/interfaces/#core-sdk-interfaces" target="_blank">interfaces</a> to get asset information for each of the supported assets, chain information for the initialized network, and functions to enable deposits, withdrawals, and subscription to balance information.</p>
 <p>Make sure you have <a href="#initializing">initialized</a> the Moonbeam network you want to interact with first.</p>
 <h3 id="symbols">Asset Symbols</h3>
 <p>An asset symbol refers to the symbol of the asset on the origin chain. For example, <code>GLMR</code> is the native asset on Moonbeam.</p>
@@ -1115,7 +1117,7 @@
 </span></code></pre></div>
 <p>Here, the units per second refer to units of token (in this case Wei) that is charged per second of execution of the XCM message. You can find more information in the <a href="https://docs.moonbeam.network/builders/interoperability/xcm/core-concepts/weights-fees/#moonbeam-reserve-assets" target="_blank">XCM fees page</a>.</p>
 <h2 id="using-the-sdk-methods">Using the SDK Methods</h2>
-<p>The Moonbeam SDK provides an API that includes <a href="./reference.md#core-sdk-methods" target="_blank">functions</a> which enable deposits, withdrawals, and subscription to balance information, in addition to a few utility functions.</p>
+<p>The Moonbeam SDK provides an API that includes <a href="../reference/methods/#core-sdk-methods" target="_blank">functions</a> which enable deposits, withdrawals, and subscription to balance information, in addition to a few utility functions.</p>
 <p>Make sure you have <a href="#initializing">initialized</a> the Moonbeam network you want to interact with first. You'll also need to make sure you've <a href="#creating-signers">created signers</a> in order to sign and send deposit and withdraw transfer data.</p>
 <h3 id="deposit">Deposit</h3>
 <p>To deposit an asset to Moonbeam from another network, you'll have to first build the transfer data using information from the origin chain before you can send it. You'll need to use a series of deposit methods to build the transfer data.</p>
@@ -1692,6 +1694,8 @@ The <code>toDecimal</code> function returns a Big number type that you can conve
 
 
                 
+</div>
+
               </article>
             </div>
           
