@@ -41,9 +41,6 @@ plugins:
   - awesome-pages
   - mike:
       canonical_version: latest
-  - redirects:
-      redirect_maps:
-          'v1/reference.md': 'v1/reference/interfaces.md'
 markdown_extensions:
   - admonition
   - attr_list
