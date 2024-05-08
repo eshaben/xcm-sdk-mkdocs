@@ -43,7 +43,7 @@ plugins:
       canonical_version: latest
   - redirects:
       redirect_maps:
-          'xcm-sdk-mkdocs/v1/reference.md': 'xcm-sdk-mkdocs/v1/reference/interfaces.md'
+          'v1/reference.md': 'v1/reference/interfaces.md'
 markdown_extensions:
   - admonition
   - attr_list
