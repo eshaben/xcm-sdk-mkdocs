@@ -59,8 +59,23 @@
   --md-footer-fg-color--light: #ffffff;
 }
 
+/* Font size */
+.md-typeset {
+  font-size: 0.7rem;
+}
+
+.md-nav {
+  font-size: 0.6rem;
+}
+
+/* Page styling */
 .tutorial {
   max-width: 36.8rem;
+}
+
+.md-sidebar__scrollwrap {
+  margin: 0;
+  margin-right: 4em;
 }
 
 /* Header styling */
@@ -98,6 +113,10 @@
 .grid > div:last-child {
   max-height: 1000px;
   overflow: auto;
+}
+
+.md-typeset .grid {
+  grid-gap: 2.5rem;
 }
 
 .md-typeset .grid > div:first-child > p:first-child {
