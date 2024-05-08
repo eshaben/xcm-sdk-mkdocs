@@ -13,7 +13,7 @@ The SDK provides the following core interfaces, which can be accessed after [ini
 
 |                              Interface                               |                                                                         Description                                                                         |
 |:--------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|      [`symbols`](.../example-usage.md/#symbols){target=\_blank}      |                   A list containing the asset's origin chain symbol for each of the supported assets for the initialized Moonbeam network                   |
-|       [`assets`](.../example-usage.md#assets){target=\_blank}        |    A list of the supported assets for the initialized Moonbeam network along with their asset ID, precompiled address on Moonbeam, and the asset symbol     |
+|      [`symbols`](../example-usage.md/#symbols){target=\_blank}      |                   A list containing the asset's origin chain symbol for each of the supported assets for the initialized Moonbeam network                   |
+|       [`assets`](../example-usage.md#assets){target=\_blank}        |    A list of the supported assets for the initialized Moonbeam network along with their asset ID, precompiled address on Moonbeam, and the asset symbol     |
 |   [`moonAsset`](../example-usage.md#native-assets){target=\_blank}   |                      Contains the asset ID, precompile contract address, and native asset symbol for the initialized Moonbeam network                       |
 | [`moonChain`](../example-usage.md#native-chain-data){target=\_blank} | Contains the chain key, name, WSS endpoint, parachain ID, decimals of the native asset, chain ID, and units per second for the initialized Moonbeam network |
