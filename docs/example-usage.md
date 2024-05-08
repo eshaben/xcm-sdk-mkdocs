@@ -1,5 +1,5 @@
 ---
-title: XCM SDK v1
+title: Using the XCM SDK v1
 description: Use the Moonbeam XCM SDK to easily transfer cross-chain assets between parachains or between a parachain and relay chain within the Polkadot/Kusama ecosystems.
 template: tutorial.html
 ---
@@ -10,15 +10,15 @@ template: tutorial.html
 
 The Moonbeam XCM SDK enables developers to easily transfer assets between chains, either between parachains or between a parachain and the relay chain, within the Polkadot/Kusama ecosystem. With the SDK, you don't need to worry about determining the multilocation of the origin or destination assets or which extrinsics are used on which networks to send XCM transfers.
 
-The XCM SDK offers helper functions, that provide a very simple interface to execute XCM transfers between chains in the Polkadot/Kusama ecosystem. In addition, the XCM config package allows any parachain project to add their information in a standard way, so they can be immediately supported by the XCM SDK.
+The XCM SDK offers helper functions that provide a very simple interface for executing XCM transfers between chains in the Polkadot/Kusama ecosystem. In addition, the XCM config package allows any parachain project to [add their information](./contribute.md) in a standard way, so the XCM SDK can immediately support them.
 
-For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the [Reference](./reference.md){target=\_blank} page.
+For an overview of the available methods and interfaces in the Moonbeam XCM SDK, please refer to the [Reference](./reference/interfaces.md){target=\_blank} page.
 
-The examples in this guide are shown on Moonbeam, but can be adapted to be used on Moonriver or Moonbase Alpha.
+This guide shows how to transfer DOT from Polkadot to Moonbeam.
 
 ## Install the XCM SDK {: #install-the-xcm-sdk }
 
-To get started with the Moonbeam XCM SDK, you'll need to first install the SDK:
+To get started with the Moonbeam XCM SDK, you'll need first to install the SDK:
 
 ```bash
 npm install @moonbeam-network/xcm-sdk
@@ -35,13 +35,13 @@ You'll also need an Ethereum signer if you're interacting with an Ethereum-compa
 === "Ethers.js"
 
     ```bash
-    npm install ethers@^5.7.2
+    npm install ethers@5
     ```
 
 === "viem"
 
     ```bash
-    npm install viem
+    npm install viem@1
     ```
 
 ## Create Signers {: #create-signers }
@@ -55,7 +55,7 @@ To create an EVM signer and a Polkadot signer, you can refer to the following se
 !!! warning
     **Never store your private key or mnemonic in a JavaScript or TypeScript file.**
 
-### Create a EVM Signer {: #create-a-evm-signer }
+### Create an EVM Signer {: #create-a-evm-signer }
 
 To create an Ethers signer, you can use the following code snippet:
 
@@ -120,7 +120,7 @@ For Moonbeam specifically, you can use the following configurations:
     const evmSigner = new ethers.Wallet(privateKey, provider);
     ```
 
-Alternatively, you can create a viem Wallet Client to pass as EVM signer:
+Alternatively, you can create a viem Wallet Client to pass as an EVM signer:
 
 === "Moonbeam"
 
@@ -212,7 +212,7 @@ If you want to pass in a browser extension wallet to viem, you can use the follo
     ```
 
 !!! note
-    --8<-- 'text/_common/endpoint-setup.md'
+    --8<-- 'text/endpoint-setup.md'
 
 ### Create a Polkadot Signer {: #create-a-polkadot-signer }
 
@@ -221,13 +221,19 @@ In this example, you can use a [Polkadot.js Keyring](https://polkadot.js.org/doc
 ```js
 import { Keyring } from '@polkadot/api';
 import { cryptoWaitReady } from '@polkadot/util-crypto';
+
 const privateKey = 'INSERT_PRIVATE_KEY';
-await cryptoWaitReady();
-const keyring = new Keyring({
-  ss58Format: 'INSERT_SS58_FORMAT',
-  type: 'sr25519',
-});
-const pair = keyring.createFromUri(privateKey);
+
+const createPolkadotSigner = async () => {
+  await cryptoWaitReady();
+  const keyring = new Keyring({
+    ss58Format: 'INSERT_SS58_FORMAT',
+    type: 'sr25519',
+  });
+  const pair = keyring.createFromUri(privateKey);
+}
+
+createPolkadotSigner();
 ```
 
 !!! note
@@ -239,7 +245,7 @@ You can use any of the following code examples to retrieve information on the su
 
 ### Get List of Supported Assets {: #get-list-of-supported-assets }
 
-To get a list of all of the assets supported by the XCM SDK, you can instantiate the XCM SDK and call the `assets` function.
+To get a list of all of the assets supported by the XCM SDK, you can instantiate the XCM SDK and call the [`assets`](./reference/methods.md#the-assets-method) function.
 
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
@@ -255,7 +261,7 @@ assets.assets.forEach((asset) => {
 
 ### Get List of Supported Assets by Ecosystem {: #get-supported-assets-by-ecosystem }
 
-To get a list of the supported assets for a particular ecosystem, you can pass in the ecosystem name: `polkadot`, `kusama`, or `alphanet-relay`. For example, the following snippet will get all of the Polkadot assets supported:
+To get a list of the supported assets for a particular [ecosystem](./reference/interfaces.md#the-ecosystem-type), you can pass in the ecosystem name: `polkadot`, `kusama`, or `alphanet-relay`. For example, the following snippet will get all of the Polkadot assets supported:
 
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
@@ -271,7 +277,7 @@ assets.assets.forEach((asset) => {
 
 ### Get List of Supported Chains by Asset {: #get-list-of-supported-assets-by-chain }
 
-To get a list of the supported source and destination chains for a given asset, you can use the following code snippet, which logs the supported chains by asset for all of the supported assets in the Polkadot ecosystem:
+To get a list of the supported [source](./reference/methods.md#the-source-method) and [destination](./reference/methods.md#the-destination-method) chains for a given asset, you can use the following code snippet, which logs the supported chains by asset for all of the supported assets in the Polkadot ecosystem:
 
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
@@ -297,9 +303,9 @@ assets.assets.forEach((asset) => {
 
 ## Build XCM Transfer Data {: #build-xcm-transfer-data }
 
-In order to transfer an asset from one chain to another, you'll need to first build the transfer data, which defines the asset to be transferred, the source chain and address, the destination chain and address, and the associated signer for the transaction. Building the transfer data is the first step; in the next section, you'll learn how to use the transfer data to actually transfer the asset.
+To transfer an asset from one chain to another, you'll need to first build the transfer data, which defines the asset to be transferred, the source chain and address, the destination chain and address, and the associated signer for the transaction. Building the transfer data is the first step; in the next section, you'll learn how to use it to actually transfer the asset.
 
-To get started, you'll use the `Sdk` function, which will expose two methods for building the XCM transfer data: `assets` and `getTransferData`.
+To get started, you'll use the [`Sdk`](./reference/methods.md#initialize-the-sdk) function, which will expose two methods for building the XCM transfer data: [`assets`](./reference/methods.md#the-assets-method) and [`getTransferData`](./reference/methods.md#the-get-transfer-data-method).
 
 ```js
 import { Sdk } from '@moonbeam-network/xcm-sdk';
@@ -307,7 +313,7 @@ import { Sdk } from '@moonbeam-network/xcm-sdk';
 const sdkInstance = new Sdk();
 ```
 
-You can choose either method, as both will return the data necessary to initiate an asset transfer between the source chain and the destination chain. Using `assets` will provide additional data along the way, including the list of supported assets and, once an asset is selected, the supported source and destination chains that are able to send and receive the asset.
+You can choose either method, as both will return the data necessary to initiate an asset transfer between the source and destination chains. Using `assets` will provide additional data along the way, including the list of supported assets and, once an asset is selected, the supported source and destination chains that can send and receive it.
 
 The process for using `assets` to build the transfer data is as follows:
 
@@ -317,7 +323,7 @@ The process for using `assets` to build the transfer data is as follows:
     const { assets, asset } = sdkInstance.assets('polkadot');
     ```
 
-    This will return a list of the supported assets and the `asset` function that can be used to define the asset to be transferred
+    This will return a list of the supported assets and the [`asset`](./reference/methods.md#the-asset-method) function that can be used to define the asset to be transferred
 
 2. Call the `asset` function and pass in the key or asset object (which includes the key and the origin symbol) to define the asset to be transferred. For example:
 
@@ -326,7 +332,7 @@ The process for using `assets` to build the transfer data is as follows:
     const { sourceChains, source } = asset('dot');
     ```
 
-    This will return a list of the supported source chains and the `source` function, which is used to define the source chain to transfer the asset from
+    This will return a list of the supported source chains and the [`source`](./reference/methods.md#the-source-method) function, which is used to define the source chain to transfer the asset from
 
 3. Call the `source` function and pass in the key or the chain object (which includes the key, name, and chain type). For example:
 
@@ -335,7 +341,7 @@ The process for using `assets` to build the transfer data is as follows:
     const { destinationChains, destination } = source('polkadot');
     ```
 
-    This will return a list of the supported destination chains where there is an open XCM channel from the source chain for the given asset and the `destination` function, which is used to define the destination chain to transfer the asset to
+    This will return a list of the supported destination chains where there is an open XCM channel from the source chain for the given asset and the [`destination`](./reference/methods.md#the-destination-method) function, which is used to define the destination chain to transfer the asset to
 
 4. Call the `destination` function and pass in the key or the chain object (which includes the key, name, and chain type). For example:
 
@@ -344,10 +350,9 @@ The process for using `assets` to build the transfer data is as follows:
     const { accounts } = destination('moonbeam');
     ```
 
-    This will return the `accounts` function, which is used to define the source and destination addresses and the associated signers for each address
+    This will return the [`accounts`](./reference/methods.md#the-accounts-method) function, which is used to define the source and destination addresses and the associated signers for each address
 
 The asset and chain objects are managed within the `@moonbeam-network/xcm-config` package. You do not need to directly interact with this package as the SDK exposes this data, but there you can find the list of [assets](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/assets.ts){target=\_blank} and [chain data](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/config/src/chains.ts){target=\_blank}.
-
 
 An example of the steps described above to build the transfer data to transfer DOT from the Polkadot relay chain to Moonbeam is as follows:
 
@@ -391,7 +396,7 @@ fromPolkadot();
 ```
 
 !!! note
-    For more information on each of the `Sdk().assets()` builder functions, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference.md#transfer-data-builder-methods){target=\_blank}.
+    For more information on each of the `Sdk().assets()` builder functions, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference/methods.md#build-the-transfer-data-starting-with-assets){target=\_blank}.
 
 If you don't need any of the asset or chain information, you can use the `getTransferData` function:
 
@@ -416,9 +421,9 @@ fromPolkadot();
 ```
 
 !!! note
-    For more information on the `Sdk().getTransferData()` function, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference.md#core-sdk-methods){target=\_blank}.
+    For more information on the `Sdk().getTransferData()` function, including the parameters and returned data, please refer to the [XCM SDK Reference](./reference/methods.md#the-get-transfer-data-method){target=\_blank}.
 
-As previously mentioned, regardless of which method you use to build the transfer data, you'll generate the same output.
+As previously mentioned, the same output will be generated regardless of which method you use to build the transfer data.
 
 ??? code "Example response"
 
@@ -558,15 +563,15 @@ As previously mentioned, regardless of which method you use to build the transfe
     }
     ```
 
-As you may have noticed in the example response, the transfer data contains information on the asset to be transferred, the source chain, and the destination chain. In addition, a few functions have been exposed:
+As you may have noticed in the example response, the transfer data contains information on the asset, source, and destination chain. In addition, a few functions have been exposed:
 
-- `swap()` - returns the transfer data necessary to swap the asset from the destination chain back to the source chain
-- `transfer()` - transfers a given amount of the asset from the source chain to the destination chain
-- `getEstimate()` - returns an estimated amount of the asset that will be received on the destination chain, less any destination fees
+- [`swap`](./reference/methods.md#the-swap-method) - returns the transfer data necessary to swap the asset from the destination chain back to the source chain
+- [`transfer`](./reference/methods.md#the-transfer-method) - transfers a given amount of the asset from the source chain to the destination chain
+- [`getEstimate`](./reference/methods.md#the-get-estimate-method) - returns an estimated amount of the asset that will be received on the destination chain, less any destination fees
 
 ## Transfer an Asset {: #transfer-an-asset }
 
-Now that you've built the transfer data, you can go ahead and transfer the asset from the source chain to the destination chain. To do so, you can use the `transfer` function, but first you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use `1000000000n` or `'0.1'`. You can use [asset conversion methods](./reference.md#utility-functions){target=\_blank}, like `toDecimal` to convert the asset to decimal format.
+Now that you've built the transfer data, you can transfer the asset from the source chain to the destination chain. To do so, you can use the [`transfer`](./reference/methods.md#the-transfer-method) function, but first, you'll need to specify an amount to send. You can specify the amount in integer or decimal format. For example, if you wanted to send 0.1 DOT, you could use `1000000000n` or `'0.1'`. You can use [asset conversion methods](./reference/methods.md#asset-conversions){target=\_blank}, like [`toDecimal`](./reference/methods.md#the-to-decimal-method) to convert the asset to decimal format.
 
 For this example, you can transfer twice the minimum amount required of DOT:
 
@@ -579,14 +584,14 @@ const hash = await data.transfer(amount);
 console.log(`${data.source.chain.name} tx hash: ${hash}`);
 ```
 
-As seen in the above snippet, the `transfer` function returns a transaction hash on the source chain.
+As the above snippet shows, the `transfer` function returns a transaction hash on the source chain.
 
 !!! note
-    For more information on the parameters and returned data for `transfer`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `transfer`, please refer to the [XCM SDK Reference](./reference/methods.md#the-transfer-method){target=\_blank}.
 
 ## Swap an Asset {: #swap-an-asset}
 
-To swap an asset, you can use the same transfer data and call `data.swap()` to switch the source and destination chain information. From there, you can simply call the `transfer` function to execute the swap.
+To swap an asset, you can use the same transfer data and call `data.swap()` to switch the source and destination chain information. You can call the `transfer` function to execute the swap from there.
 
 ```js
 ...
@@ -598,7 +603,7 @@ const hash = await swapData.transfer(amount);
 console.log(`${swapData.source.chain.name} tx hash: ${hash}`);
 ```
 
-The `swap` function returns the transfer data with the original source chain and destination chain swapped. Using the previous example of sending DOT from Polkadot to Moonbeam, the swap transfer data would send DOT from Moonbeam to Polkadot.
+The `swap` function returns the transfer data with the original source chain and destination chains swapped. Using the previous example of sending DOT from Polkadot to Moonbeam, the swap transfer data would send DOT from Moonbeam to Polkadot.
 
 ??? code "Example response"
 
@@ -738,15 +743,15 @@ The `swap` function returns the transfer data with the original source chain and
     ```
 
 !!! note
-    For more information on the parameters and returned data for `swap`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `swap`, please refer to the [XCM SDK Reference](./reference/methods.md#the-swap-method){target=\_blank}.
 
-## Get an Estimate of the Asset to be Received on the Destination Chain {: #get-estimate }
+## Get an Estimate of the Asset to Be Received on the Destination Chain {: #get-estimate }
 
-When you send an XCM message, you typically pay fees on the destination chain to execute the XCM instructions. Before you transfer the asset, you can use the `getEstimate` function to calculate an estimated amount of the asset that will be received on the destination chain, minus any fees.
+When you send an XCM message, you typically pay fees on the destination chain to execute the XCM instructions. Before you transfer the asset, you can use the [`getEstimate`](./reference/methods.md#the-get-estimate-method) function to calculate an estimated amount of the asset that will be received on the destination chain minus any fees.
 
 The `getEstimate` function is tied to a specific transfer request as it is based on the asset being transferred and the destination chain fees, so you'll need to create the [transfer data](#build-xcm-transfer-data) first.
 
-You'll need to provide the amount to be transferred to the `getEstimate` function. In the following example, you'll get the estimated amount of DOT that will be received on Moonbeam when 0.1 DOT is transferred. You can specify the amount in integer (`1000000000n`) or decimal (`'0.1'`) format.
+You must provide the amount to be transferred to the `getEstimate` function. In the following example, you'll get the estimated amount of DOT that will be received on Moonbeam when 0.1 DOT is transferred. You can specify the amount in integer (`1000000000n`) or decimal (`'0.1'`) format.
 
 ```js
 ...
@@ -779,7 +784,7 @@ The `getEstimate` function returns the estimated amount along with information o
     ```
 
 !!! note
-    For more information on the parameters and returned data for `getEstimate`, please refer to the [XCM SDK Reference](./reference.md#transfer-data-consumer-methods){target=\_blank}.
+    For more information on the parameters and returned data for `getEstimate`, please refer to the [XCM SDK Reference](./reference/methods.md#the-get-estimate-method){target=\_blank}.
 
 ## Get Transfer Minimum and Maximum Amounts {: #transfer-min-max-amounts }
 
@@ -831,7 +836,7 @@ The `min` and `max` properties return the minimum and maximum amount of the asse
     ```
 
 !!! note
-    For more information on assets and asset amounts, please refer to the [XCM SDK Reference](./reference.md#assets){target=\_blank}.
+    For more information on assets and asset amounts, please refer to the [XCM SDK Reference](./reference/interfaces.md#assets){target=\_blank}.
 
 ## Get Transfer Fees {: #get-transfer-fees }
 
@@ -856,7 +861,7 @@ console.log(
 );
 ```
 
-The `fee` property returns the amount of fees to be paid along with information on the asset.
+The `fee` property returns the fees to be paid along with information on the asset.
 
 ??? code "Example response"
 
@@ -880,6 +885,6 @@ The `fee` property returns the amount of fees to be paid along with information 
     ```
 
 !!! note
-    For more information on assets and asset amounts, including fees, please refer to the [XCM SDK Reference](./reference.md#assets){target=\_blank}.
+    For more information on assets and asset amounts, including fees, please refer to the [XCM SDK Reference](./reference/interfaces.md#assets){target=\_blank}.
   
 --8<-- 'text/third-party-content.md'

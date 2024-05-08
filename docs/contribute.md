@@ -27,7 +27,7 @@ The first step in adding support for a new asset is to define the asset in the [
 Follow these steps:
 
 1. Open the `xcm-sdk/packages/config/src/assets.ts` file
-2. Create a new variable for your asset. You'll need to create an [Asset Object](/core-interfaces#the-asset-object), providing the `key` and `originSymbol` of the asset
+2. Create a new variable for your asset. You'll need to create an [Asset Object](./reference/interfaces.md#the-asset-object), providing the `key` and `originSymbol` of the asset
 
     ```ts
     export const INSERT_ASSET_NAME = new Asset({
@@ -58,7 +58,7 @@ To add a chain, take the following steps:
 
 1. Open the `xcm-sdk/packages/config/src/chains.ts` file
 2. Add your asset to the list of imported assets from the assets configuration file (`./assets.ts`)
-3. Create a new variable for each chain, if an entry doesn't already exist. You'll need to create a [Chain Object](/core-interfaces#the-chain-object), providing metadata related to the chain
+3. Create a new variable for each chain if an entry doesn't already exist. You'll need to create a [Chain Object](./reference/interfaces.md#the-chain-object), providing metadata related to the chain
 
     === "Parachain"
 
@@ -122,15 +122,15 @@ To add a chain, take the following steps:
 !!! note
     Chains are listed in alphabetical order. Please make sure you follow this order when adding new chains.
 
-Now that you've added the chain, you can continue on to the next section to add the assets that this chain supports.
+Now that you've added the chain, you can continue to the next section to add the assets that this chain supports.
 
 ## Configure a Chain's Assets
 
-To designate a chain as a destination or source chain for an asset, you must specify the asset within the `assetsData` array of the chain's configuration. This array outlines the supported assets on the chain, and the asset information within it determines how the asset is identified or targeted on that specific chain. For example, when adding a chain's native asset, you'll need to define how the chain sees it's own asset and when adding the asset to a destination chain, you'll need to define how the destination chain sees the asset.
+To designate a chain as a destination or source chain for an asset, you must specify the asset within the `assetsData` array of the chain's configuration. This array outlines the supported assets on the chain, and the asset information within it determines how the asset is identified or targeted on that specific chain. For example, when adding a chain's native asset, you'll need to define how the chain sees its own asset, and when adding the asset to a destination chain, you'll need to define how the destination chain sees the asset.
 
-To enable an asset to move between chains, follow these steps to configure the source and destination chain's of an asset:
+To enable an asset to move between chains, follow these steps to configure the source and destination chains of an asset:
 
-1. In the `assetsData` array of the source chain, you'll need to create a [Chain Asset Data Object](/core-interfaces#the-chain-assets-data-object) for the asset, specifying how the asset is seen on that chain
+1. In the `assetsData` array of the source chain, you'll need to create a [Chain Asset Data Object](./reference/interfaces.md#the-chain-assets-data-object) for the asset, specifying how the asset is seen on that chain
 
     ```ts
     {
@@ -160,7 +160,7 @@ To enable an asset to move between chains, follow these steps to configure the s
     });
     ```
 
-2. In the destination chain's `assetsData` array, create a [Chain Asset Data Object](/core-interfaces#the-chain-assets-data-object) that define the asset as seen on the destination chain. This will be different than the source chain's configurations, as every chain manages assets differently
+2. In the destination chain's `assetsData` array, create a [Chain Asset Data Object](./reference/interfaces.md#the-chain-assets-data-object) that defines the asset as seen on the destination chain. This will be different than the source chain's configurations, as every chain manages assets differently
 
     For example, to add support for USDT on Moonbeam, Moonbeam's chain configuration needs to include the configuration for USDT:
 
@@ -178,21 +178,21 @@ To enable an asset to move between chains, follow these steps to configure the s
     });
     ```
 
-The integration isn't complete yet, you'll need to define the methods that are used for cross-chain transfers for any new chains added. This will be covered in the following section.
+The integration isn't complete yet; you'll need to define the methods used for cross-chain transfers for any new chains added. This will be covered in the following section.
 
 ## Configure a Chain's Extrinsics
 
-In this step, you have to create or update the configuration files of the chains you can transfer the asset between. These files define the asset being transferred, the destination chain, information associated to fees, and builder functions. These builders define the pallets and methods necessary to achieve the specific goals of each type. They are as follows:
+In this step, you have to create or update the configuration files of the chains between which you can transfer the asset. These files define the asset being transferred, the destination chain, information associated to fees, and builder functions. These builders define the pallets and methods necessary to achieve the specific goals of each type. They are as follows:
 
 - **Minimum Asset Builder** - builds a query to retrieve the minimum amount of an asset required to be left in an account
 - **Balance Builder** - builds a query to retrieve the balance of an asset for a given account
 - **Contract Builder** - builds the contract call for the cross-chain transfer. This is specific to EVM chains that use contracts to interact with Substrate pallets for cross-chain transfers, such as [Moonbeam's X-Tokens precompiled contract](https://docs.moonbeam.network/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/){target=\_blank}
 - **Extrinsic Builder** - builds the extrinsic for the cross-chain transfer
-- **Fee Builder** - builds the query to retrieve the fee for the exeuction of the cross-chain transfer
+- **Fee Builder** - builds the query to retrieve the fee for the execution of the cross-chain transfer
 
-You will need to know which pallet and method each chain is using for its XCM transactions and for fetching the assets balances, and make sure that said pallets and methods are already available in the [xcm-builder package](https://github.com/moonbeam-foundation/xcm-sdk/tree/main/packages/builder){target=\_blank}.
+You will need to know which pallet and method each chain is using for its XCM transactions and for fetching asset balances, and make sure that said pallets and methods are already available in the [xcm-builder package](https://github.com/moonbeam-foundation/xcm-sdk/tree/main/packages/builder){target=\_blank}.
 
-If they aren't available, feel free to open a PR or [submit a issue on GitHub](https://github.com/moonbeam-foundation/xcm-sdk/issues/new){target=\_blank}.
+If they aren't available, feel free to open a PR or [submit an issue on GitHub](https://github.com/moonbeam-foundation/xcm-sdk/issues/new){target=\_blank}.
 
 Assuming that all of the required pallets and methods are already supported, you can create the configuration file for the source chain:
 
@@ -213,7 +213,7 @@ Assuming that all of the required pallets and methods are already supported, you
     });
     ```
 
-3. As seen in the above example, there is an `assets` array, which contains the chain's asset configurations. The asset configuration defines the asset being transferred, the destination chain, information associated with fees, and the builder functions. The builder functions must be used to build the queries or calls as if they were being executed from this chain.
+3. As seen in the above example, an `assets` array contains the chain's asset configurations. The asset configuration defines the asset being transferred, the destination chain, information associated with fees, and the builder functions. The builder functions must be used to build the queries or calls as if they were being executed from this chain.
 
     You'll need to create an Asset Config object for each asset, for example:
 
@@ -241,7 +241,7 @@ Assuming that all of the required pallets and methods are already supported, you
 4. Add the newly created chain configurations to the `chainsConfigList` in the `xcm-sdk/blob/main/packages/config/src/configs/index.ts` file
 
 !!! note
-    Chain configurations are listed in alphabetical order. Please make sure you follow this order when adding new chain configurations.
+    Chain configurations are listed in alphabetical order. Please follow this order when adding new chain configurations.
 
 For example, to add support to transfer USDT from the Polkadot Asset Hub to Moonbeam, the Polkadot Asset Hub configuration file is as follows:
 
@@ -287,11 +287,11 @@ export const polkadotAssetHubConfig = new ChainConfig({
 });
 ```
 
-You're almost there. With this configuration, you'll be able to send the asset one-way from the configured chain to the asset's specified destination chain. To be able to send the asset back to the original source chain, you'll need to update (or create) the specified destination chain's configurations. Considering the above example, to transfer USDT from Moonbeam back to the Polkadot Asset Hub, the Moonbeam configuration file would need to be updated.
+You're almost there. With this configuration, you can send the asset one-way from the configured chain to the asset's specified destination chain. To send the asset back to the original source chain, you must update (or create) the specified destination chain's configurations. Considering the above example, the Moonbeam configuration file would need to be updated to transfer USDT from Moonbeam back to the Polkadot Asset Hub.
 
-You'll need to take the exact same steps in the destination chain's configuration file. If a configuration file does not exist, you'll need to create one. Otherwise, update the chain's configuration file to include the asset configuration as outlined in step three.
+You must take the same steps in the destination chain's configuration file. If a configuration file does not exist, you must create one. Otherwise, update the chain's configuration file to include the asset configuration, as step three outlines.
 
-For example, enabling USDT transfers from Moonbeam back to the Polkadot Asset Hub, requires the following Moonbeam chain configuration:
+For example, enabling USDT transfers from Moonbeam back to the Polkadot Asset Hub requires the following Moonbeam chain configuration:
 
 ```ts
 import { BalanceBuilder, ContractBuilder } from '@moonbeam-network/xcm-builder';
@@ -329,15 +329,15 @@ export const moonbeamConfig = new ChainConfig({
 });
 ```
 
-And that's it! You now know how to add new assets and chains and configure the chains that an asset can be sent to and from. To ensure that you've properly set everything up, make sure to read on to the next section.
+And that's it! You now know how to add new assets and chains and configure the chains that an asset can be sent to and from. To ensure that you've properly set everything up, read on to the next section.
 
 ## Test New Configurations
 
-The SDK is configured to work for the majority of the parachains in the Polkadot ecosystem. However, any given chain might have a different or particular way of requesting a specific piece of information, for example if it uses unconventional pallets or different methods for existing pallets.
+The SDK is configured to work for most parachains in the Polkadot ecosystem. However, any given chain might have a different or particular way of requesting a specific piece of information, for example, if it uses unconventional pallets or different methods for existing pallets.
 
-To make sure that the new configurations have been properly set up, you can use the following queries.
+You can use the following queries to ensure that the new configurations have been properly set up.
 
-- `assetRegistry.assetMetadatas` -  From here we extract the `decimals` and the `minBalance` for
+- `assetRegistry.assetMetadatas` -  From here, we extract the `decimals` and the `minBalance` for
 `aSEED`:
 
     ```js
@@ -349,7 +349,7 @@ To make sure that the new configurations have been properly set up, you can use 
     }
     ```
 
-- `assets.metadata` - Here we get the `decimals` for `DOT`
+- `assets.metadata` - Here, we get the `decimals` for `DOT`
 
     ```js
     {
@@ -367,4 +367,4 @@ To make sure that the new configurations have been properly set up, you can use 
     100000000000
     ```
 
-Most cases are considered already but for the chains being integrated, this data might be queried by a different pallet or function. You can check if the pallet is supported in the [Polkadot Service file](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/sdk/src/polkadot/PolkadotService.ts).
+Most cases are considered already, but for newly integrated chains, this data might be queried by a different pallet or function. You can check if the pallet is supported in the [Polkadot Service file](https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/sdk/src/polkadot/PolkadotService.ts).
