@@ -247,16 +247,19 @@
   
   
   
-    <li class="md-tabs__item">
-      <a href="../reference/" class="md-tabs__link">
-        
+    
+    
+      <li class="md-tabs__item">
+        <a href="../reference/interfaces/" class="md-tabs__link">
+          
   
     
   
-  SDK Reference
+  Reference
 
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -368,16 +371,91 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Reference
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../reference/" class="md-nav__link">
+      <a href="../reference/interfaces/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    SDK Reference
+    Types and Interfaces
   </span>
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reference/methods/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Methods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -550,7 +628,7 @@
 <ol>
 <li>Open the <code>xcm-sdk/packages/config/src/assets.ts</code> file</li>
 <li>
-<p>Create a new variable for your asset. You'll need to create an <a href="/core-interfaces#the-asset-object">Asset Object</a>, providing the <code>key</code> and <code>originSymbol</code> of the asset</p>
+<p>Create a new variable for your asset. You'll need to create an <a href="../reference/interfaces/#the-asset-object">Asset Object</a>, providing the <code>key</code> and <code>originSymbol</code> of the asset</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">INSERT_ASSET_NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Asset</span><span class="p">({</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nx">key</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INSERT_KEY&#39;</span><span class="p">,</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nx">originSymbol</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;INSERT_ORIGIN_SYMBOL&#39;</span><span class="p">,</span>
@@ -578,7 +656,7 @@
 <li>Open the <code>xcm-sdk/packages/config/src/chains.ts</code> file</li>
 <li>Add your asset to the list of imported assets from the assets configuration file (<code>./assets.ts</code>)</li>
 <li>
-<p>Create a new variable for each chain, if an entry doesn't already exist. You'll need to create a <a href="/core-interfaces#the-chain-object">Chain Object</a>, providing metadata related to the chain</p>
+<p>Create a new variable for each chain if an entry doesn't already exist. You'll need to create a <a href="../reference/interfaces/#the-chain-object">Chain Object</a>, providing metadata related to the chain</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Parachain</label><label for="__tabbed_1_2">EVM Parachain</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -642,13 +720,13 @@
 <p class="admonition-title">Note</p>
 <p>Chains are listed in alphabetical order. Please make sure you follow this order when adding new chains.</p>
 </div>
-<p>Now that you've added the chain, you can continue on to the next section to add the assets that this chain supports.</p>
+<p>Now that you've added the chain, you can continue to the next section to add the assets that this chain supports.</p>
 <h2 id="configure-a-chains-assets">Configure a Chain's Assets</h2>
-<p>To designate a chain as a destination or source chain for an asset, you must specify the asset within the <code>assetsData</code> array of the chain's configuration. This array outlines the supported assets on the chain, and the asset information within it determines how the asset is identified or targeted on that specific chain. For example, when adding a chain's native asset, you'll need to define how the chain sees it's own asset and when adding the asset to a destination chain, you'll need to define how the destination chain sees the asset.</p>
-<p>To enable an asset to move between chains, follow these steps to configure the source and destination chain's of an asset:</p>
+<p>To designate a chain as a destination or source chain for an asset, you must specify the asset within the <code>assetsData</code> array of the chain's configuration. This array outlines the supported assets on the chain, and the asset information within it determines how the asset is identified or targeted on that specific chain. For example, when adding a chain's native asset, you'll need to define how the chain sees its own asset, and when adding the asset to a destination chain, you'll need to define how the destination chain sees the asset.</p>
+<p>To enable an asset to move between chains, follow these steps to configure the source and destination chains of an asset:</p>
 <ol>
 <li>
-<p>In the <code>assetsData</code> array of the source chain, you'll need to create a <a href="/core-interfaces#the-chain-assets-data-object">Chain Asset Data Object</a> for the asset, specifying how the asset is seen on that chain</p>
+<p>In the <code>assetsData</code> array of the source chain, you'll need to create a <a href="../reference/interfaces/#the-chain-assets-data-object">Chain Asset Data Object</a> for the asset, specifying how the asset is seen on that chain</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nx">asset</span><span class="o">:</span><span class="w"> </span><span class="kt">INSERT_IMPORTED_ASSET</span><span class="p">,</span><span class="w"> </span><span class="c1">// The asset created in the previous section</span>
 </span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nx">balanceId</span><span class="o">:</span><span class="w"> </span><span class="kt">INSERT_CHAIN_ASSET_ID</span><span class="p">,</span><span class="w"> </span><span class="c1">// (Optional) The balance ID of the asset</span>
@@ -674,7 +752,7 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>In the destination chain's <code>assetsData</code> array, create a <a href="/core-interfaces#the-chain-assets-data-object">Chain Asset Data Object</a> that define the asset as seen on the destination chain. This will be different than the source chain's configurations, as every chain manages assets differently</p>
+<p>In the destination chain's <code>assetsData</code> array, create a <a href="../reference/interfaces/#the-chain-assets-data-object">Chain Asset Data Object</a> that defines the asset as seen on the destination chain. This will be different than the source chain's configurations, as every chain manages assets differently</p>
 <p>For example, to add support for USDT on Moonbeam, Moonbeam's chain configuration needs to include the configuration for USDT:</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">moonbeam</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">EvmParachain</span><span class="p">({</span>
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span><span class="nx">assetsData</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
@@ -690,18 +768,18 @@
 </span></code></pre></div>
 </li>
 </ol>
-<p>The integration isn't complete yet, you'll need to define the methods that are used for cross-chain transfers for any new chains added. This will be covered in the following section.</p>
+<p>The integration isn't complete yet; you'll need to define the methods used for cross-chain transfers for any new chains added. This will be covered in the following section.</p>
 <h2 id="configure-a-chains-extrinsics">Configure a Chain's Extrinsics</h2>
-<p>In this step, you have to create or update the configuration files of the chains you can transfer the asset between. These files define the asset being transferred, the destination chain, information associated to fees, and builder functions. These builders define the pallets and methods necessary to achieve the specific goals of each type. They are as follows:</p>
+<p>In this step, you have to create or update the configuration files of the chains between which you can transfer the asset. These files define the asset being transferred, the destination chain, information associated to fees, and builder functions. These builders define the pallets and methods necessary to achieve the specific goals of each type. They are as follows:</p>
 <ul>
 <li><strong>Minimum Asset Builder</strong> - builds a query to retrieve the minimum amount of an asset required to be left in an account</li>
 <li><strong>Balance Builder</strong> - builds a query to retrieve the balance of an asset for a given account</li>
 <li><strong>Contract Builder</strong> - builds the contract call for the cross-chain transfer. This is specific to EVM chains that use contracts to interact with Substrate pallets for cross-chain transfers, such as <a href="https://docs.moonbeam.network/builders/interoperability/xcm/xc20/send-xc20s/xtokens-precompile/" target="_blank">Moonbeam's X-Tokens precompiled contract</a></li>
 <li><strong>Extrinsic Builder</strong> - builds the extrinsic for the cross-chain transfer</li>
-<li><strong>Fee Builder</strong> - builds the query to retrieve the fee for the exeuction of the cross-chain transfer</li>
+<li><strong>Fee Builder</strong> - builds the query to retrieve the fee for the execution of the cross-chain transfer</li>
 </ul>
-<p>You will need to know which pallet and method each chain is using for its XCM transactions and for fetching the assets balances, and make sure that said pallets and methods are already available in the <a href="https://github.com/moonbeam-foundation/xcm-sdk/tree/main/packages/builder" target="_blank">xcm-builder package</a>.</p>
-<p>If they aren't available, feel free to open a PR or <a href="https://github.com/moonbeam-foundation/xcm-sdk/issues/new" target="_blank">submit a issue on GitHub</a>.</p>
+<p>You will need to know which pallet and method each chain is using for its XCM transactions and for fetching asset balances, and make sure that said pallets and methods are already available in the <a href="https://github.com/moonbeam-foundation/xcm-sdk/tree/main/packages/builder" target="_blank">xcm-builder package</a>.</p>
+<p>If they aren't available, feel free to open a PR or <a href="https://github.com/moonbeam-foundation/xcm-sdk/issues/new" target="_blank">submit an issue on GitHub</a>.</p>
 <p>Assuming that all of the required pallets and methods are already supported, you can create the configuration file for the source chain:</p>
 <ol>
 <li>In the <code>xcm-sdk/packages/config/src/configs/</code> directory, add a TypeScript file for the new chain</li>
@@ -721,7 +799,7 @@
 </span></code></pre></div>
 </li>
 <li>
-<p>As seen in the above example, there is an <code>assets</code> array, which contains the chain's asset configurations. The asset configuration defines the asset being transferred, the destination chain, information associated with fees, and the builder functions. The builder functions must be used to build the queries or calls as if they were being executed from this chain.</p>
+<p>As seen in the above example, an <code>assets</code> array contains the chain's asset configurations. The asset configuration defines the asset being transferred, the destination chain, information associated with fees, and the builder functions. The builder functions must be used to build the queries or calls as if they were being executed from this chain.</p>
 <p>You'll need to create an Asset Config object for each asset, for example:</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="ow">new</span><span class="w"> </span><span class="nx">AssetConfig</span><span class="p">({</span>
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nx">asset</span><span class="o">:</span><span class="w"> </span><span class="kt">INSERT_ASSET</span><span class="p">,</span>
@@ -749,7 +827,7 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Chain configurations are listed in alphabetical order. Please make sure you follow this order when adding new chain configurations.</p>
+<p>Chain configurations are listed in alphabetical order. Please follow this order when adding new chain configurations.</p>
 </div>
 <p>For example, to add support to transfer USDT from the Polkadot Asset Hub to Moonbeam, the Polkadot Asset Hub configuration file is as follows:</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
@@ -792,9 +870,9 @@
 </span><span id="__span-12-38"><a id="__codelineno-12-38" name="__codelineno-12-38" href="#__codelineno-12-38"></a><span class="w">  </span><span class="nx">chain</span><span class="o">:</span><span class="w"> </span><span class="kt">polkadotAssetHub</span><span class="p">,</span>
 </span><span id="__span-12-39"><a id="__codelineno-12-39" name="__codelineno-12-39" href="#__codelineno-12-39"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>You're almost there. With this configuration, you'll be able to send the asset one-way from the configured chain to the asset's specified destination chain. To be able to send the asset back to the original source chain, you'll need to update (or create) the specified destination chain's configurations. Considering the above example, to transfer USDT from Moonbeam back to the Polkadot Asset Hub, the Moonbeam configuration file would need to be updated.</p>
-<p>You'll need to take the exact same steps in the destination chain's configuration file. If a configuration file does not exist, you'll need to create one. Otherwise, update the chain's configuration file to include the asset configuration as outlined in step three.</p>
-<p>For example, enabling USDT transfers from Moonbeam back to the Polkadot Asset Hub, requires the following Moonbeam chain configuration:</p>
+<p>You're almost there. With this configuration, you can send the asset one-way from the configured chain to the asset's specified destination chain. To send the asset back to the original source chain, you must update (or create) the specified destination chain's configurations. Considering the above example, the Moonbeam configuration file would need to be updated to transfer USDT from Moonbeam back to the Polkadot Asset Hub.</p>
+<p>You must take the same steps in the destination chain's configuration file. If a configuration file does not exist, you must create one. Otherwise, update the chain's configuration file to include the asset configuration, as step three outlines.</p>
+<p>For example, enabling USDT transfers from Moonbeam back to the Polkadot Asset Hub requires the following Moonbeam chain configuration:</p>
 <div class="language-ts highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">BalanceBuilder</span><span class="p">,</span><span class="w"> </span><span class="nx">ContractBuilder</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@moonbeam-network/xcm-builder&#39;</span><span class="p">;</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">import</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span><span class="p">...</span>
@@ -829,13 +907,13 @@
 </span><span id="__span-13-32"><a id="__codelineno-13-32" name="__codelineno-13-32" href="#__codelineno-13-32"></a><span class="w">  </span><span class="nx">chain</span><span class="o">:</span><span class="w"> </span><span class="kt">moonbeam</span><span class="p">,</span>
 </span><span id="__span-13-33"><a id="__codelineno-13-33" name="__codelineno-13-33" href="#__codelineno-13-33"></a><span class="p">});</span>
 </span></code></pre></div>
-<p>And that's it! You now know how to add new assets and chains and configure the chains that an asset can be sent to and from. To ensure that you've properly set everything up, make sure to read on to the next section.</p>
+<p>And that's it! You now know how to add new assets and chains and configure the chains that an asset can be sent to and from. To ensure that you've properly set everything up, read on to the next section.</p>
 <h2 id="test-new-configurations">Test New Configurations</h2>
-<p>The SDK is configured to work for the majority of the parachains in the Polkadot ecosystem. However, any given chain might have a different or particular way of requesting a specific piece of information, for example if it uses unconventional pallets or different methods for existing pallets.</p>
-<p>To make sure that the new configurations have been properly set up, you can use the following queries.</p>
+<p>The SDK is configured to work for most parachains in the Polkadot ecosystem. However, any given chain might have a different or particular way of requesting a specific piece of information, for example, if it uses unconventional pallets or different methods for existing pallets.</p>
+<p>You can use the following queries to ensure that the new configurations have been properly set up.</p>
 <ul>
 <li>
-<p><code>assetRegistry.assetMetadatas</code> -  From here we extract the <code>decimals</code> and the <code>minBalance</code> for
+<p><code>assetRegistry.assetMetadatas</code> -  From here, we extract the <code>decimals</code> and the <code>minBalance</code> for
 <code>aSEED</code>:</p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">aUSD</span><span class="w"> </span><span class="nx">SEED</span>
@@ -846,7 +924,7 @@
 </span></code></pre></div>
 </li>
 <li>
-<p><code>assets.metadata</code> - Here we get the <code>decimals</code> for <code>DOT</code></p>
+<p><code>assets.metadata</code> - Here, we get the <code>decimals</code> for <code>DOT</code></p>
 <div class="language-js highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nx">deposit</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
 </span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">xcDOT</span>
@@ -862,7 +940,7 @@
 </span></code></pre></div>
 </li>
 </ul>
-<p>Most cases are considered already but for the chains being integrated, this data might be queried by a different pallet or function. You can check if the pallet is supported in the <a href="https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/sdk/src/polkadot/PolkadotService.ts">Polkadot Service file</a>.</p>
+<p>Most cases are considered already, but for newly integrated chains, this data might be queried by a different pallet or function. You can check if the pallet is supported in the <a href="https://github.com/moonbeam-foundation/xcm-sdk/blob/main/packages/sdk/src/polkadot/PolkadotService.ts">Polkadot Service file</a>.</p>
 
 
 
@@ -920,7 +998,7 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.tabs", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.indexes", "navigation.tabs", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
