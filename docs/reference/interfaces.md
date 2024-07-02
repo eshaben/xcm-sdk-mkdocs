@@ -23,6 +23,7 @@ Defines an asset's key and symbol used on the asset's origin chain.
 - `originSymbol` ++"string"++ - The symbol of the asset on the asset's origin chain
 
 </div>
+<div markdown>
 
 ```js title="Example"
 // The Asset object
@@ -32,6 +33,8 @@ Defines an asset's key and symbol used on the asset's origin chain.
   originSymbol: 'GLMR'
 }
 ```
+
+</div>
 </div>
 
 ---
@@ -54,6 +57,7 @@ Defines properties related to an asset, including `Asset` properties, the decima
 - `symbol` ++"string"++ - The symbol of the asset
 
 </div>
+<div markdown>
 
 ```js title="Example"
 // The Asset Amount object
@@ -66,6 +70,8 @@ Defines properties related to an asset, including `Asset` properties, the decima
   symbol: 'GLMR'
 }
 ```
+
+</div>
 </div>
 
 ---
