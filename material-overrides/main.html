@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block libs %}
+    <script>
+    {{ super() }}
+    console.log('Hello from the main.html!');
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Hi!');
+        console.log(document.referrer);
+    });
+    </script>
+{% endblock %}
