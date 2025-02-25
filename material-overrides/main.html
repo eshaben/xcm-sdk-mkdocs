@@ -20,9 +20,9 @@
   {{ super() }}
 {% endblock %}
 
-{% block libs %}
-    <script defer>
+{% block scripts %}
     {{ super() }}
+    <script defer>
     console.log('Hello from the main.html!');
     document.addEventListener('DOMContentLoaded', () => {
         console.log('Hi!');
