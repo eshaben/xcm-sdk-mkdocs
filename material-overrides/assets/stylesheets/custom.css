@@ -193,3 +193,13 @@
   font-style: italic;
   margin-top: 3em;
 }
+
+/** Announcement banner styling */
+.announce.hideable {
+  z-index: 1;
+}
+
+.md-banner {
+  background-color: var(--mystic);
+  text-align: center;
+}
