@@ -38,51 +38,8 @@
 
     
     
-    <script defer>
-    console.log('Hello from the main.html!');
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log('Hi!');
-        console.log(document.referrer);
-
-        if (document.referrer.includes('eshaben.github.io/test-docs')) {        
-        const announceElement = document.querySelector('.announce.hideable');
-        if (announceElement) {          
-          const content = announceElement.querySelector('.md-typeset');
-          if (content) {            
-            const storedHash = __md_get('__announce');  
-            const currentHash = __md_hash(content.innerHTML);
-
-            const close = document.querySelector('.md-banner__button');
-            if (close) {
-              close.addEventListener('click', () => {                
-                // If the current hash matches the stored value, hide the element
-                if (currentHash === storedHash) {
-                  announceElement.style.display = 'none';
-                  announceElement.hidden = true;
-                } else {
-                  __md_set('__announce', currentHash);
-                  announceElement.style.display = 'none';
-                  announceElement.hidden = true;
-                }
-              });
-            }
-
-            console.log('current', currentHash);
-            console.log('stored', storedHash);
-            
-            // Only show the banner if the stored hash doesn't match
-            if (currentHash !== storedHash) {
-              announceElement.style.display = 'block';
-            }
-          }
-        }
-      }
-    });
-    </script>
-    
       
     
-
     
       
         
@@ -1617,8 +1574,48 @@ The information presented herein has been provided by third parties and is made 
     <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.indexes", "navigation.tabs", "toc.follow", "toc.integrate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
+    
       <script src="../assets/javascripts/bundle.081f42fc.min.js"></script>
       
     
+    <script defer>
+    console.log('Hello from the main.html!');
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Hi!');
+        console.log(document.referrer);
+
+        if (document.referrer.includes('eshaben.github.io/test-docs')) {        
+        const announceElement = document.querySelector('.announce.hideable');
+        if (announceElement) {          
+          const content = announceElement.querySelector('.md-typeset');
+          if (content) {            
+            const storedHash = __md_get('__announce');  
+            const currentHash = __md_hash(content.innerHTML);
+
+            const close = document.querySelector('.md-banner__button');
+            if (close) {
+              close.addEventListener('click', () => {                
+                // If the current hash matches the stored value, hide the element
+                if (currentHash === storedHash) {
+                  announceElement.style.display = 'none';
+                  announceElement.hidden = true;
+                } else {
+                  __md_set('__announce', currentHash);
+                  announceElement.style.display = 'none';
+                  announceElement.hidden = true;
+                }
+              });
+            }
+            
+            // Only show the banner if the stored hash doesn't match
+            if (currentHash !== storedHash) {
+              announceElement.style.display = 'block';
+            }
+          }
+        }
+    }
+    });
+    </script>
+
   </body>
 </html>
