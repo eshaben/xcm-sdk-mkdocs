@@ -37,9 +37,6 @@
   <link rel="stylesheet" href="assets/stylesheets/home.css">
 
     
-    
-      
-    
     <script defer>
     console.log('Hello from the main.html!');
     document.addEventListener('DOMContentLoaded', () => {
@@ -68,6 +65,9 @@
                 }
               });
             }
+
+            console.log('current', currentHash);
+            console.log('stored', storedHash);
             
             // Only show the banner if the stored hash doesn't match
             if (currentHash !== storedHash) {
@@ -75,9 +75,12 @@
             }
           }
         }
-    }
+      }
     });
     </script>
+    
+      
+    
 
     
       
